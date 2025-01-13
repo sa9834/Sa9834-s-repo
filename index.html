@@ -11,6 +11,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      overflow: hidden;
     }
 
     /* Header and Menu Styling */
@@ -68,6 +69,15 @@
 
     .shake {
       animation: shake 0.5s;
+    }
+
+    /* Mini Parrot Styling */
+    .mini-parrot {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      z-index: 1000;
     }
 
     /* List Styling */
@@ -138,6 +148,43 @@
       setTimeout(() => {
         parrotImage.classList.remove('shake');
       }, 500); // Match the duration of the shake animation
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'q') {
+        const miniParrot = document.createElement('img');
+        miniParrot.src = parrotImage.src;
+        miniParrot.classList.add('mini-parrot');
+        document.body.appendChild(miniParrot);
+
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * window.innerHeight;
+        let dx = Math.random() * 4 + 2; // Speed in x direction
+        let dy = Math.random() * 4 + 2; // Speed in y direction
+
+        function moveParrot() {
+          x += dx;
+          y += dy;
+
+          // Check for collisions with edges
+          if (x + miniParrot.width > window.innerWidth || x < 0) {
+            dx = -dx;
+          }
+
+          if (y + miniParrot.height > window.innerHeight || y < 0) {
+            dy = -dy;
+          }
+
+          miniParrot.style.left = `${x}px`;
+          miniParrot.style.top = `${y}px`;
+
+          requestAnimationFrame(moveParrot);
+        }
+
+        miniParrot.style.left = `${x}px`;
+        miniParrot.style.top = `${y}px`;
+        moveParrot();
+      }
     });
   </script>
 </body>
