@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +55,27 @@
       object-fit: cover;
       border: 1px solid darkblue;
       margin-bottom: 1em;
+      cursor: pointer;
+      transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    }
+
+    /* Bouncing Animation */
+    @keyframes bounce {
+      0% {
+        transform: translateX(0) scale(1) translateY(0);
+      }
+      25% {
+        transform: translateX(25vw) scale(0.7) translateY(-10px);
+      }
+      50% {
+        transform: translateX(50vw) scale(0.5) translateY(0);
+      }
+      75% {
+        transform: translateX(75vw) scale(0.7) translateY(-10px);
+      }
+      100% {
+        transform: translateX(100vw) scale(0.5) translateY(0);
+      }
     }
 
     /* List Styling */
@@ -102,7 +122,7 @@
     </header>
 
     <section>
-      <img class="image-with-borders" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2wVFthgVkUtjr2x5BXihh3hLv32XkSpZeg&s" alt="A Quacker Parrot" />
+      <img class="image-with-borders" id="parrotImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2wVFthgVkUtjr2x5BXihh3hLv32XkSpZeg&s" alt="A Quacker Parrot" />
     </section>
 
     <section>
@@ -114,5 +134,16 @@
       </ul>
     </section>
   </div>
+
+  <script>
+    // JavaScript to make the parrot image "fly" and bounce when clicked
+    const parrotImage = document.getElementById('parrotImage');
+
+    parrotImage.addEventListener('click', () => {
+      // Add the bounce animation when clicked
+      parrotImage.style.animation = 'bounce 3s ease-in-out forwards';
+      parrotImage.style.opacity = '0';  // Fade out effect
+    });
+  </script>
 </body>
 </html>
