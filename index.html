@@ -1,63 +1,117 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quacker Parrots</title>
   <style>
-.background-color {
-  background-image: linear-gradient(lightblue, lightblue); 
-}
-.title-color {
-      color:darkblue;
-}
-.image-with-borders {
-  border: 1px solid darkblue;
-}
+    /* General Background Color */
+    body {
+      background-image: linear-gradient(lightblue, lightblue);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  border-radius: 2em;
-  margin-top: .5em;
-  margin-bottom: .5em;
-  border: 2px solid darkblue;
-  background: #fff;
-  padding: 1em;
-}
+    /* Header and Menu Styling */
+    .menu {
+      text-align: center;
+      background-color: darkblue;
+      padding: 1em 0;
+    }
 
-.menu {
-  text-align: center;
-  background: darkblue;
-}
-.menu-item {
-  text-decoration: none;
-  color: white;
-}
-</style>
+    .menu-item {
+      text-decoration: none;
+      color: white;
+      font-size: 1.2em;
+      padding: 0.5em 1em;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-item:hover {
+      background-color: #005bb5;
+    }
+
+    /* Container Styling */
+    .container {
+      max-width: 800px;
+      margin: 2em auto;
+      border-radius: 2em;
+      border: 2px solid darkblue;
+      background-color: white;
+      padding: 2em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-color {
+      color: darkblue;
+    }
+
+    /* Image Styling */
+    .image-with-borders {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border: 1px solid darkblue;
+      margin-bottom: 1em;
+    }
+
+    /* List Styling */
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    li a {
+      color: darkblue;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    li a:hover {
+      color: #005bb5;
+    }
+
+    /* Responsive Image */
+    @media (max-width: 768px) {
+      .image-with-borders {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
 </head>
 
-<body class="background-color">
+<body>
+  <!-- Navigation Menu -->
   <div class="container menu">
     <a class="menu-item" href="https://sa9834.github.io/Sa9834-s-repo/">Home</a>
   </div>
+
+  <!-- Main Content -->
   <div class="container">
-    <h1 class='title-color' >Quacker Parrots</h1>
-    <h2 class='title-color' >This is a Quacker Parrot</h2>
-    <img class="image-with-borders" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2wVFthgVkUtjr2x5BXihh3hLv32XkSpZeg&s" height="400" />
-    <h2 class='title-color' >In this website you will learn every thing about them</h2>
-  <br>
-    <ul>
-     <li><a href="Quaker.html">Diet</a></li>
-    </ul>
-    <ul>
-    <li><a href="Quaker2.html">Toys/Cage</a></li>
+    <header>
+      <h1 class="title-color">Quacker Parrots</h1>
+      <h2 class="title-color">This is a Quacker Parrot</h2>
+    </header>
+
+    <section>
+      <img class="image-with-borders" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI2wVFthgVkUtjr2x5BXihh3hLv32XkSpZeg&s" alt="Quacker Parrot" />
+    </section>
+
+    <section>
+      <h2 class="title-color">In this website you will learn everything about them</h2>
+
+      <ul>
+        <li><a href="Quaker.html">Diet</a></li>
+        <li><a href="Quaker2.html">Toys/Cage</a></li>
       </ul>
+    </section>
   </div>
-
 </body>
-
-
-
-
-
-
-
 </html>
