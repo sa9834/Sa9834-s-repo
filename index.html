@@ -58,6 +58,18 @@
       cursor: pointer;
     }
 
+    /* Shake Animation */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    .shake {
+      animation: shake 0.5s;
+    }
+
     /* List Styling */
     ul {
       padding-left: 20px;
@@ -116,7 +128,17 @@
   </div>
 
   <script>
-    // JavaScript removed as there is no longer any animation needed
+    const parrotImage = document.getElementById('parrotImage');
+
+    parrotImage.addEventListener('click', () => {
+      // Add the shake class
+      parrotImage.classList.add('shake');
+
+      // Remove the shake class after animation ends
+      setTimeout(() => {
+        parrotImage.classList.remove('shake');
+      }, 500); // Match the duration of the shake animation
+    });
   </script>
 </body>
 </html>
