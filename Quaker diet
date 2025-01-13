@@ -1,38 +1,183 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Food</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parrot Game</title>
   <style>
-.a7 {
-  background-image: linear-gradient(lightblue, lightblue); 
-}
-
- .s1{
-      color:darkblue;
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: lightblue;
+      font-family: Arial, sans-serif;
     }
-</style>
 
+    canvas {
+      background-color: #87ceeb;
+      border: 2px solid #000;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      color: darkblue;
+    }
+
+    .game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      color: red;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-<body class="a7">
-  <h1 class='s1' >Quaker Parrot diet</h1>
-  <h2 class='s1' >Let's look at what these parakeets eat!</h2>
-  <img src="https://www.petsupermarket.com/dw/image/v2/BGTK_PRD/on/demandware.static/-/Sites-petsupermarket-m-catalog/default/dw6846b890/images/original/PSI00586.1.jpg?sw=800&sh=800
-" height="400" />
- <h3 class='s1' >Quaker Parrots also known as Monk Parakeets need to have a varied diet. <br>
-These are some other foods that Quakers like:<br>Lettuce, Apple, banana, strawberries, grapes, melon, pineapple, berries,
-oranges, peaches, pears,Peppers, squash, cooked beans, broccoli, zucchini, pumpkin,<br>
-peas, leafy greens, sprouts, cauliflower, and celery.<br></h3>
- <h2 class='s1' >Do not feed Quaker Parrots these foods.</h2>
- <h3 class='s1' > alcohol, chocolate, or avocado.</h3>
-</body
 
+<canvas id="gameCanvas" width="500" height="600"></canvas>
+<div class="game-over" id="gameOverMessage" style="display: none;">Game Over</div>
 
+<script>
+// Get the canvas element and its context
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
+// Game variables
+let parrotY = canvas.height / 2;
+let velocity = 0;
+let gravity = 0.8;
+let lift = -12;
+let parrotRadius = 20;
+let isGameOver = false;
+let score = 0;
 
+// Pipe variables
+let pipeWidth = 50;
+let pipeGap = 150;
+let pipeSpeed = 3;
+let pipes = [];
 
+// Control the parrot's movement
+document.addEventListener('keydown', (event) => {
+  if (event.key === ' ' && !isGameOver) {
+    velocity = lift;
+  }
+});
 
+// Draw the parrot
+function drawParrot() {
+  ctx.beginPath();
+  ctx.arc(50, parrotY, parrotRadius, 0, Math.PI * 2);
+  ctx.fillStyle = 'green';
+  ctx.fill();
+  ctx.closePath();
+}
 
+// Draw the pipes
+function drawPipes() {
+  pipes.forEach((pipe, index) => {
+    ctx.fillStyle = 'green';
+    ctx.fillRect(pipe.x, 0, pipeWidth, pipe.topHeight);
+    ctx.fillRect(pipe.x, pipe.topHeight + pipeGap, pipeWidth, canvas.height);
+    
+    // Move the pipes
+    pipe.x -= pipeSpeed;
 
+    // Remove pipes when they go off-screen
+    if (pipe.x + pipeWidth < 0) {
+      pipes.splice(index, 1);
+      score++;
+    }
+  });
+}
 
+// Generate new pipes
+function generatePipes() {
+  const topHeight = Math.floor(Math.random() * (canvas.height - pipeGap));
+  pipes.push({
+    x: canvas.width,
+    topHeight: topHeight
+  });
+}
 
+// Check for collisions with pipes or the ground
+function checkCollisions() {
+  // Check if the parrot hits the ground
+  if (parrotY + parrotRadius >= canvas.height) {
+    isGameOver = true;
+  }
+
+  // Check if the parrot hits any pipes
+  for (let i = 0; i < pipes.length; i++) {
+    const pipe = pipes[i];
+
+    if (
+      50 + parrotRadius > pipe.x &&
+      50 - parrotRadius < pipe.x + pipeWidth &&
+      (parrotY - parrotRadius < pipe.topHeight || parrotY + parrotRadius > pipe.topHeight + pipeGap)
+    ) {
+      isGameOver = true;
+    }
+  }
+}
+
+// Update the game state
+function updateGame() {
+  if (isGameOver) {
+    document.getElementById('gameOverMessage').style.display = 'block';
+    return;
+  }
+
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Apply gravity
+  velocity += gravity;
+  parrotY += velocity;
+
+  // Draw everything
+  drawParrot();
+  drawPipes();
+
+  // Generate new pipes periodically
+  if (Math.random() < 0.01) {
+    generatePipes();
+  }
+
+  // Check for collisions
+  checkCollisions();
+
+  // Display the score
+  ctx.font = '20px Arial';
+  ctx.fillStyle = 'black';
+  ctx.fillText(`Score: ${score}`, 20, 30);
+
+  // Call the update function again
+  requestAnimationFrame(updateGame);
+}
+
+// Start the game
+updateGame();
+
+</script>
+
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
