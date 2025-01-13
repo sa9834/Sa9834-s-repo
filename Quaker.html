@@ -1,66 +1,107 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quacker Parrots</title>
   <style>
-.background-color {
-  background-image: linear-gradient(lightblue, lightblue); 
-}
-.title-color {
-      color:darkblue;
-}
-.image-with-borders {
-  border: 1px solid darkblue;
-}
+    /* General Background Color */
+    body {
+      background-image: linear-gradient(lightblue, lightblue);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  border-radius: 2em;
-  margin-top: .5em;
-  margin-bottom: .5em;
-  border: 2px solid darkblue;
-  background: #fff;
-  padding: 1em;
-}
+    /* Header and Menu Styling */
+    .menu {
+      text-align: center;
+      background: darkblue;
+      padding: 1em 0;
+    }
 
-.menu {
-  text-align: center;
-  background: darkblue;
-}
-.menu-item {
-  text-decoration: none;
-  color: white;
-}
-</style>
+    .menu-item {
+      text-decoration: none;
+      color: white;
+      font-size: 1.2em;
+      padding: 0.5em 1em;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-item:hover {
+      background-color: #005bb5;
+    }
+
+    /* Container and Title Styles */
+    .container {
+      max-width: 800px;
+      margin: 2em auto;
+      border-radius: 2em;
+      border: 2px solid darkblue;
+      background-color: white;
+      padding: 2em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-color {
+      color: darkblue;
+    }
+
+    /* Image Styling */
+    .image-with-borders {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border: 1px solid darkblue;
+      margin-bottom: 1em;
+    }
+
+    /* Section Styling */
+    section h2 {
+      font-size: 1.6em;
+      margin-top: 1em;
+    }
+
+    section h3 {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+
+    /* Responsive Image */
+    @media (max-width: 768px) {
+      .image-with-borders {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
 </head>
 
-<body class="background-color">
-  <div class="container menu">
+<body>
+  <!-- Navigation Menu -->
+  <div class="menu">
     <a class="menu-item" href="https://sa9834.github.io/Sa9834-s-repo/">Home</a>
   </div>
+
+  <!-- Main Content -->
   <div class="container">
-    <h1 class='title-color' >Quaker Parrot diet</h1>
-  <h2 class='title-color' >Let's look at what these parakeets eat!</h2>
-  <img src="https://www.petsupermarket.com/dw/image/v2/BGTK_PRD/on/demandware.static/-/Sites-petsupermarket-m-catalog/default/dw6846b890/images/original/PSI00586.1.jpg?sw=800&sh=800
-" height="400" />
- <h3 class='title-color' >Quaker Parrots also known as Monk Parakeets need to have a varied diet. <br>
-These are some other foods that Quakers like:<br>Rice (steamed only no oil), Lettuce, Apple, banana, strawberries, grapes, melon, pineapple, berries,
-oranges, peaches, pears,Peppers, squash, cooked beans, broccoli, zucchini, pumpkin,<br>
-peas, leafy greens, sprouts, cauliflower, and celery.<br></h3>
- <h2 class='title-color' >Do not feed Quaker Parrots these foods.</h2>
- <h3 class='title-color' > alcohol, chocolate, or avocado.</h3>
-    
+    <header>
+      <h1 class="title-color">Quaker Parrot Diet</h1>
+      <h2 class="title-color">Let's look at what these parakeets eat!</h2>
+    </header>
+
+    <section>
+      <img class="image-with-borders" src="https://www.petsupermarket.com/dw/image/v2/BGTK_PRD/on/demandware.static/-/Sites-petsupermarket-m-catalog/default/dw6846b890/images/original/PSI00586.1.jpg?sw=800&sh=800" alt="Quaker Parrot Food" />
+      <h3 class="title-color">Quaker Parrots, also known as Monk Parakeets, need to have a varied diet. Here are some other foods that Quakers like:</h3>
+      <p>Rice (steamed only, no oil), Lettuce, Apple, Banana, Strawberries, Grapes, Melon, Pineapple, Berries, Oranges, Peaches, Pears, Peppers, Squash, Cooked Beans, Broccoli, Zucchini, Pumpkin, Peas, Leafy Greens, Sprouts, Cauliflower, and Celery.</p>
+    </section>
+
+    <section>
+      <h2 class="title-color">Do not feed Quaker Parrots these foods:</h2>
+      <h3 class="title-color">Alcohol, Chocolate, or Avocado.</h3>
+    </section>
   </div>
-
 </body>
-
-
-
-
-
-
-
 </html>
-
-
 
